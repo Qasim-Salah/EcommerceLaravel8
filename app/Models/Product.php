@@ -27,9 +27,9 @@ class Product extends Model
         'image',
         'category_id',];
 
-    public function categories()
+    public function category()
     {
-        return $this->belongsToMany(Category::class, 'product_categories');
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
 //    public function hasStock($quantity)
@@ -52,11 +52,15 @@ class Product extends Model
 //        return $total = $this->special_price ?? $this->price;
 //
 //    }
-
-    public function getPhotoAttribute($val)
+    public function getStock()
+    {
+        return $this->stock_status == 0 ? 'Out Of Stock' : 'inStock';
+    }
+    public function getImageAttribute($val)
     {
 
-        return $val ? asset('assets/images/products/' . $val) : '';
+        return $val ? asset('assets/images/products/' . $val) : asset('assets/images/img.png' );
     }
+
 
 }

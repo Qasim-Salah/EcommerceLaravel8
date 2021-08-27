@@ -16,7 +16,7 @@
     " type="text/css" href="{{asset('assets/front/css/font-awesome.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/front/css/bootstrap.min.css')}}">
     <link rel=" stylesheet " type="text/css" href="{{asset('assets/front/css/owl.carousel.min.css')}}">
-    <link rel=" stylesheet   " type="text/css" href="{{asset('assets/front/css/flexslider.css')}}">
+    {{--    <link rel=" stylesheet   " type="text/css" href="{{asset('assets/front/css/flexslider.css')}}">--}}
 
     <link rel="stylesheet" type="text/css" href="{{asset('assets/front/css/chosen.min.css')}}">
     <link rel=" stylesheet
@@ -32,17 +32,24 @@
 <!--header-->
 @include('front.includes.header')
 
+@include('front.includes.alerts.success')
+@include('front.includes.alerts.errors')
+
 @yield('content')
+
 @include('front.includes.footer')
 
-<script src="{{asset(' assets/front/js/jquery-1.12.4.minb8ff.js?ver=1.12.4')}}"></script>
-<script src="{{asset(' assets/front/js/jquery-ui-1.12.4.minb8ff.js?ver=1.12.4')}}"></script>
-<script src="{{asset(' assets/front/js/bootstrap.min.js')}}"></script>
-<script src="{{asset(' assets/front/js/jquery.flexslider.js')}}"></script>
-<script src="{{asset(' assets/front/js/chosen.jquery.min.js')}}"></script>
-<script src="{{asset(' assets/front/js/owl.carousel.min.js')}}"></script>
-<script src="{{asset(' assets/front/js/jquery.countdown.min.js')}}"></script>
-<script src="{{asset(' assets/front/js/jquery.sticky.js')}}"></script>
-<script src="{{asset(' assets/front/js/functions.js')}}"></script>
+<script src="{{asset('assets/front/js/jquery-1.12.4.minb8ff.js?ver=1.12.4')}}"></script>
+<script src="{{asset('assets/front/js/jquery-ui-1.12.4.minb8ff.js?ver=1.12.4')}}"></script>
+<script src="{{asset('assets/front/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('assets/front/js/jquery.flexslider.js')}}"></script>
+<script src="{{asset('assets/front/js/chosen.jquery.min.js')}}"></script>
+<script src="{{asset('assets/front/js/owl.carousel.min.js')}}"></script>
+<script src="{{asset('assets/front/js/jquery.countdown.min.js')}}"></script>
+<script src="{{asset('assets/front/js/jquery.sticky.js')}}"></script>
+<script src="{{asset('assets/front/js/functions.js')}}"></script>
+@yield('script')
+
 </body>
+
 </html>

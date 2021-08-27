@@ -57,11 +57,17 @@
                                 </div>
                             </div>
                             <div class="wrap-butons">
-                                <a href="#" class="btn add-to-cart">Add to Cart</a>
-                                <div class="wrap-btn">
-                                    <a href="#" class="btn btn-compare">Add Compare</a>
-                                    <a href="#" class="btn btn-wishlist">Add Wishlist</a>
-                                </div>
+                                <form action="{{route('front.cart')}}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{$product->id}}">
+                                    <input type="hidden" name="name" value="{{$product->name}}">
+                                    <input type="hidden" name="regular_price" value="{{$product->regular_price}}">
+                                    <input class="btn add-to-cart" type="submit" name="submit" value="Add To Cart">
+                                    <div class="wrap-btn">
+                                        <a href="#" class="btn btn-compare">Add Compare</a>
+                                        <a href="#" class="btn btn-wishlist">Add Wishlist</a>
+                                    </div>
+                                </form>
                             </div>
                         </div>
 
