@@ -3,9 +3,8 @@
 namespace App\Http\Requests\Dashboard;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Str;
 
-class CategoryRequest extends FormRequest
+class SaleDateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,18 +23,19 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
-
         return [
-            'name' => 'required',
-            'slug' => 'required|max:100|unique:categories,slug,'.$this->id
+            'status' => 'required',
+            'sale_date' => 'required',
+
+
         ];
     }
 
     public function messages()
     {
-
         return [
-
+            //
         ];
+
     }
 }

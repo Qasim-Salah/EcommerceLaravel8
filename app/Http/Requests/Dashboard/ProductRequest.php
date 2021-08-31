@@ -29,7 +29,7 @@ class ProductRequest extends FormRequest
             'description' => 'required|max:1000',
             'short_description' => 'nullable|max:500',
             'regular_price' => 'required|numeric', //[]
-            'sale_price' => 'numeric',
+            'sale_price' => 'numeric|nullable',
             'sku' => 'required|max:100',
             'stock_status' => 'required',
             'featured' => 'required',

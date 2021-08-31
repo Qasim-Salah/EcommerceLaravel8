@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\Dashboard\CategoryController;
-use App\Http\Controllers\Dashboard\HomeSliderController;
-use App\Http\Controllers\Dashboard\LoginController;
-use App\Http\Controllers\Dashboard\ProductController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\HomeSliderController;
+use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SaleController;
+use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -14,7 +16,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'guest:admi
 
 });
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:admin'], function () {
-
+    Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::group(['prefix' => 'category'], function () {
         Route::get('/', [CategoryController::class, 'index'])->name('category');
         Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
@@ -40,6 +42,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:admin
         Route::get('/edit/{id}', [HomeSliderController::class, 'edit'])->name('slider.edit');
         Route::post('/update/{id}', [HomeSliderController::class, 'update'])->name('slider.update');
         Route::get('/delete/{id}', [HomeSliderController::class, 'destroy'])->name('slider.destroy');
+    });
+
+    Route::group(['prefix' => 'sale'], function () {
+        Route::get('/create', [SaleController::class, 'create'])->name('sale.create');
+        Route::post('/store', [SaleController::class, 'store'])->name('sale.store');
     });
 
 });
