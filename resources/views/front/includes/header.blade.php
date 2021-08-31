@@ -52,6 +52,15 @@
                                         <li class="menu-item">
                                             <a title="Dashboard" href="#">Dashboard</a>
                                         </li>
+                                        <li class="menu-item">
+                                            <a title="Category" href="{{route('admin.category')}}">Category</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a title="Product" href="{{route('admin.product')}}">product</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a title="Slider" href="{{route('admin.slider')}}">Slider</a>
+                                        </li>
                                         <form id="logout-form" action="{{ route('admin.logout') }}" method="POST">
                                             @csrf
                                             <li class="menu-item">
@@ -80,7 +89,7 @@
                                         </form>
                                     </ul>
                             @endif
-                          @guest
+                            @guest
                                 <li class="menu-item"><a title="Register or Login" href="{{route('admin.login')}}">Login of Admin </a></li>
                                 <li class="menu-item"><a title="Register or Login" href="{{route('login')}}">Login</a></li>
                                 <li class="menu-item"><a title="Register or Login" href="{{route('register')}}">Register</a></li>
@@ -98,34 +107,12 @@
 
                     <div class="wrap-search center-section">
                         <div class="wrap-search-form">
-                            <form action="#" id="form-search-top" name="form-search-top">
-                                <input type="text" name="search" value="" placeholder="Search here...">
-                                <button form="form-search-top" type="button"><i class="fa fa-search"
+                            <form action="{{route('front.product.search')}}" method="POST" id="form-search-top" name="form-search-top">
+                                @csrf
+                                <input type="text" name="search" value="{{old('search',request()->search)}}" placeholder="Search here...">
+                                <button form="form-search-top" type="submit"><i class="fa fa-search"
                                                                                 aria-hidden="true"></i>
                                 </button>
-                                <div class="wrap-list-cate">
-                                    <input type="hidden" name="product-cate" value="0" id="product-cate">
-                                    <a href="#" class="link-control">All Category</a>
-                                    <ul class="list-cate">
-                                        <li class="level-0">All Category</li>
-                                        <li class="level-1">-Electronics</li>
-                                        <li class="level-2">Batteries & Chargens</li>
-                                        <li class="level-2">Headphone & Headsets</li>
-                                        <li class="level-2">Mp3 Player & Acessories</li>
-                                        <li class="level-1">-Smartphone & Table</li>
-                                        <li class="level-2">Batteries & Chargens</li>
-                                        <li class="level-2">Mp3 Player & Headphones</li>
-                                        <li class="level-2">Table & Accessories</li>
-                                        <li class="level-1">-Electronics</li>
-                                        <li class="level-2">Batteries & Chargens</li>
-                                        <li class="level-2">Headphone & Headsets</li>
-                                        <li class="level-2">Mp3 Player & Acessories</li>
-                                        <li class="level-1">-Smartphone & Table</li>
-                                        <li class="level-2">Batteries & Chargens</li>
-                                        <li class="level-2">Mp3 Player & Headphones</li>
-                                        <li class="level-2">Table & Accessories</li>
-                                    </ul>
-                                </div>
                             </form>
                         </div>
                     </div>

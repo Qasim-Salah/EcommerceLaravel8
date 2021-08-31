@@ -28,7 +28,7 @@ class ProductFactory extends Factory
             'description' => $this->faker->text(500),
             'regular_price' => $this->faker->numberBetween(10, 500),
             'sku' => 'DIGI' . $this->faker->numberBetween(10, 500),
-            'stock_status' => 'in_stock',
+            'stock_status' => '0',
             'quantity' => $this->faker->numberBetween(100, 500),
             'category_id' => $this->faker->numberBetween(1, 5),
         ];

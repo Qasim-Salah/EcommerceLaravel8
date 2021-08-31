@@ -9,8 +9,8 @@
 
             <div class="wrap-breadcrumb">
                 <ul>
-                    <li class="item-link"><a href="#" class="link">home</a></li>
-                    <li class="item-link"><span>Digital & Electronics</span></li>
+                    <li class="item-link"><a href="{{route('front.home')}}" class="link">home</a></li>
+                    <li class="item-link"><span>Products</span></li>
                 </ul>
             </div>
             <div class="row">
@@ -19,45 +19,13 @@
 
                     <div class="banner-shop">
                         <a href="#" class="banner-link">
-                            <figure><img src="assets/images/shop-banner.jpg" alt=""></figure>
+                            <figure><img src="{{asset('assets/front/images/shop-banner.jpg')}}"></figure>
                         </a>
                     </div>
 
                     <div class="wrap-shop-control">
 
                         <h1 class="shop-title">Digital & Electronics</h1>
-
-                        <div class="wrap-right">
-
-                            <div class="sort-item orderby ">
-                                <select name="orderby" class="use-chosen">
-                                    <option value="menu_order" selected="selected">Default sorting</option>
-                                    <option value="popularity">Sort by popularity</option>
-                                    <option value="rating">Sort by average rating</option>
-                                    <option value="date">Sort by newness</option>
-                                    <option value="price">Sort by price: low to high</option>
-                                    <option value="price-desc">Sort by price: high to low</option>
-                                </select>
-                            </div>
-
-                            <div class="sort-item product-per-page">
-                                <select name="post-per-page" class="use-chosen">
-                                    <option value="12" selected="selected">12 per page</option>
-                                    <option value="16">16 per page</option>
-                                    <option value="18">18 per page</option>
-                                    <option value="21">21 per page</option>
-                                    <option value="24">24 per page</option>
-                                    <option value="30">30 per page</option>
-                                    <option value="32">32 per page</option>
-                                </select>
-                            </div>
-
-                            <div class="change-display-mode">
-                                <a href="#" class="grid-mode display-mode active"><i class="fa fa-th"></i>Grid</a>
-                                <a href="list.html" class="list-mode display-mode"><i class="fa fa-th-list"></i>List</a>
-                            </div>
-
-                        </div>
 
                     </div><!--end wrap shop control-->
 
@@ -79,73 +47,37 @@
                                                    class="product-name"><span>{{$products->name}}</span></a>
                                                 <div class="wrap-price"><span class="product-price">${{$products->regular_price}}</span>
                                                 </div>
-                                                <a href="#" class="btn add-to-cart">Add To Cart</a>
+                                                <div class="wrap-butons">
+
+                                                    <form action="{{route('front.cart')}}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{$products->id}}">
+                                                        <input type="hidden" name="name" value="{{$products->name}}">
+                                                        <input type="hidden" name="regular_price" value="{{$products->regular_price}}">
+                                                        <input class="btn add-to-cart" type="submit" name="submit" value="Add To Cart">
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </li>
                                 @endforeach
                             @endisset
-
                         </ul>
-
+                        {{$product->links()}}
                     </div>
-
-
-                    <div class="wrap-pagination-info">
-                        <ul class="page-numbers">
-
-                            <li><span class="page-number-item current"
-                                {{ $product->appends(request()->input())->links() }}
-                                </span></li>
-                            {{--                            <li><a class="page-number-item" href="#">2</a></li>--}}
-                            {{--                            <li><a class="page-number-item" href="#">3</a></li>--}}
-                            {{--                            <li><a class="page-number-item next-link" href="#">Next</a></li>--}}
-                        </ul>
-                        {{--                        <p class="result-count">Showing 1-8 of 12 result</p>--}}
-                    </div>
-                </div><!--end main products area-->
+                </div><!--end main pr oducts area-->
 
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
                     <div class="widget mercado-widget categories-widget">
                         <h2 class="widget-title">All Categories</h2>
                         <div class="widget-content">
                             <ul class="list-category">
-                                <li class="category-item has-child-cate">
-                                    <a href="#" class="cate-link">Fashion & Accessories</a>
-                                    <span class="toggle-control">+</span>
-                                    <ul class="sub-cate">
-                                        <li class="category-item"><a href="#" class="cate-link">Batteries (22)</a></li>
-                                        <li class="category-item"><a href="#" class="cate-link">Headsets (16)</a></li>
-                                        <li class="category-item"><a href="#" class="cate-link">Screen (28)</a></li>
-                                    </ul>
-                                </li>
-                                <li class="category-item has-child-cate">
-                                    <a href="#" class="cate-link">Furnitures & Home Decors</a>
-                                    <span class="toggle-control">+</span>
-                                    <ul class="sub-cate">
-                                        <li class="category-item"><a href="#" class="cate-link">Batteries (22)</a></li>
-                                        <li class="category-item"><a href="#" class="cate-link">Headsets (16)</a></li>
-                                        <li class="category-item"><a href="#" class="cate-link">Screen (28)</a></li>
-                                    </ul>
-                                </li>
-                                <li class="category-item has-child-cate">
-                                    <a href="#" class="cate-link">Digital & Electronics</a>
-                                    <span class="toggle-control">+</span>
-                                    <ul class="sub-cate">
-                                        <li class="category-item"><a href="#" class="cate-link">Batteries (22)</a></li>
-                                        <li class="category-item"><a href="#" class="cate-link">Headsets (16)</a></li>
-                                        <li class="category-item"><a href="#" class="cate-link">Screen (28)</a></li>
-                                    </ul>
-                                </li>
-                                <li class="category-item">
-                                    <a href="#" class="cate-link">Tools & Equipments</a>
-                                </li>
-                                <li class="category-item">
-                                    <a href="#" class="cate-link">Kid’s Toys</a>
-                                </li>
-                                <li class="category-item">
-                                    <a href="#" class="cate-link">Organics & Spa</a>
-                                </li>
+                                @isset($category)
+                                    @foreach($category as $categories)
+                                        <li class="category-item"><a href="{{route('front.category.product',$categories->slug)}}"
+                                                                     class="cate-link">{{$categories->name}}</a></li>
+                                    @endforeach
+                                @endisset
                             </ul>
                         </div>
                     </div><!-- Categories widget-->
