@@ -27,7 +27,6 @@ class Order extends Model
         'country',
         'zipcode',
         'status',
-        'is_shipping_different',
     ];
 
     public function user()

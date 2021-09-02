@@ -75,6 +75,16 @@ class ShopController extends Controller
         return redirect()->route('user.cart')->with(['error' => 'An error occurred, please try again later']);
     }
 
+    public function destroyWishlist($id)
+    {
+        foreach (Cart::instance('wishlist')->content() as $wish) {
+            if ($wish->id == $id) {
+                Cart::instance('wishlist')->remove($wish->rowId);
+                return redirect()->back();
+            }
+        }
+    }
+
     public function destroyAll()
     {
         $product = Cart::instance('cart')->destroy();

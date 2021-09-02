@@ -6,44 +6,14 @@
                     <div class="topbar-menu left-menu">
                         <ul>
                             <li class="menu-item">
-                                <a title="Hotline: (+123) 456 789" href="#"><span class="icon label-before fa fa-mobile"></span>Hotline:
-                                    (+123) 456 789</a>
+                                <a title="Hotline: (+964) 7702814484" href="#"><span class="icon label-before fa fa-mobile"></span>Hotline:
+                                    (+964) 7702814484</a>
                             </li>
 
                         </ul>
                     </div>
                     <div class="topbar-menu right-menu">
                         <ul>
-                            <li class="menu-item lang-menu menu-item-has-children parent">
-                                <a title="English" href="#"><span class="img label-before"><img src="assets/images/lang-en.png"
-                                                                                                alt="lang-en"></span>English<i
-                                        class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                <ul class="submenu lang">
-                                    <li class="menu-item"><a title="hungary" href="#"><span class="img label-before"><img
-                                                    src="assets/images/lang-hun.png" alt="lang-hun"></span>Hungary</a></li>
-                                    <li class="menu-item"><a title="german" href="#"><span class="img label-before"><img
-                                                    src="assets/images/lang-ger.png" alt="lang-ger"></span>German</a></li>
-                                    <li class="menu-item"><a title="french" href="#"><span class="img label-before"><img
-                                                    src="assets/images/lang-fra.png" alt="lang-fre"></span>French</a></li>
-                                    <li class="menu-item"><a title="canada" href="#"><span class="img label-before"><img
-                                                    src="assets/images/lang-can.png" alt="lang-can"></span>Canada</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item menu-item-has-children parent">
-                                <a title="Dollar (USD)" href="#">Dollar (USD)<i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                <ul class="submenu curency">
-                                    <li class="menu-item">
-                                        <a title="Pound (GBP)" href="#">Pound (GBP)</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a title="Euro (EUR)" href="#">Euro (EUR)</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a title="Dollar (USD)" href="#">Dollar (USD)</a>
-                                    </li>
-                                </ul>
-                            </li>
-
                             @if (Auth('admin')->check())
                                 <li class="menu-item menu-item-has-children parent">
                                     <a title="My Account" href="#">My Account: {{Auth('admin')->user()->name}}
@@ -64,6 +34,12 @@
                                         <li class="menu-item">
                                             <a title="Sale" href="{{route('admin.sale.create')}}">Sale</a>
                                         </li>
+                                        <li class="menu-item">
+                                            <a title="Order" href="{{route('admin.order')}}">Order</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a title="Contact" href="{{route('admin.contact')}}">Contact</a>
+                                        </li>
                                         <form id="logout-form" action="{{ route('admin.logout') }}" method="POST">
                                             @csrf
                                             <li class="menu-item">
@@ -82,6 +58,12 @@
                                         <li class="menu-item">
                                             <a title="Dashboard" href="#">Dashboard</a>
                                         </li>
+                                        <li class="menu-item">
+                                            <a title="Order" href="{{route('user.order')}}">My Order</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a title="Password" href="{{route('user.change.password')}}">Change Password</a>
+                                        </li>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                             @csrf
                                             <li class="menu-item">
@@ -92,7 +74,6 @@
                                     </ul>
                             @endif
                             @if (!Auth('web')->check() && !Auth('admin')->check())
-                                <li class="menu-item"><a title="Register or Login" href="{{route('admin.login')}}">Login of Admin </a></li>
                                 <li class="menu-item"><a title="Register or Login" href="{{route('login')}}">Login</a></li>
                                 <li class="menu-item"><a title="Register or Login" href="{{route('register')}}">Register</a></li>
                         @endif
@@ -103,8 +84,8 @@
                 <div class="mid-section main-info-area">
 
                     <div class="wrap-logo-top left-section">
-                        <a href="index.html" class="link-to-home"><img src="assets/images/logo-top-1.png"
-                                                                       alt="mercado"></a>
+                        <a href="#" class="link-to-home"><img src="{{asset('assets/user/images/logo-top-1.png')}}"
+                                                              alt="mercado"></a>
                     </div>
 
                     <div class="wrap-search center-section">
@@ -121,18 +102,18 @@
 
                     <div class="wrap-icon right-section">
                         <div class="wrap-icon-section wishlist">
-                            <a href="#" class="link-direction">
+                            <a href="{{route('user.wishlist')}}" class="link-direction">
                                 <i class="fa fa-heart" aria-hidden="true"></i>
                                 <div class="left-info">
                                     @if (Cart::instance('wishlist')->count() > 0)
-                                    <span class="index">{{Cart::instance('wishlist')->count()}} item</span>
+                                        <span class="index">{{Cart::instance('wishlist')->count()}} item</span>
                                     @endif
                                     <span class="title">Wishlist</span>
                                 </div>
                             </a>
                         </div>
                         <div class="wrap-icon-section minicart">
-                            <a href="#" class="link-direction">
+                            <a href="{{route('user.cart')}}" class="link-direction">
                                 <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                                 <div class="left-info">
                                     @if (Cart::instance('cart')->count() > 0)
@@ -156,24 +137,6 @@
             </div>
 
             <div class="nav-section header-sticky">
-                <div class="header-nav-section">
-                    <div class="container">
-                        <ul class="nav menu-nav clone-main-menu" id="mercado_haead_menu" data-menuname="Sale Info">
-                            <li class="menu-item"><a href="#" class="link-term">Weekly Featured</a><span
-                                    class="nav-label hot-label">hot</span></li>
-                            <li class="menu-item"><a href="#" class="link-term">Hot Sale items</a><span
-                                    class="nav-label hot-label">hot</span></li>
-                            <li class="menu-item"><a href="#" class="link-term">Top new items</a><span
-                                    class="nav-label hot-label">hot</span></li>
-                            <li class="menu-item"><a href="#" class="link-term">Top Selling</a><span
-                                    class="nav-label hot-label">hot</span>
-                            </li>
-                            <li class="menu-item"><a href="#" class="link-term">Top rated items</a><span
-                                    class="nav-label hot-label">hot</span></li>
-                        </ul>
-                    </div>
-                </div>
-
                 <div class="primary-nav-section">
                     <div class="container">
                         <ul class="nav primary clone-main-menu" id="mercado_main" data-menuname="Main menu">
@@ -191,10 +154,11 @@
                                 <a href="{{route('user.cart')}}" class="link-term mercado-item-title">Cart</a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{route('user.checkout')}}" class="link-term mercado-item-title">Checkout</a>
+                                <a href="{{route('user.checkout.create')}}" class="link-term mercado-item-title">Checkout</a>
                             </li>
+
                             <li class="menu-item">
-                                <a href="contact-us.html" class="link-term mercado-item-title">Contact Us</a>
+                                <a href="{{route('user.contact')}}" class="link-term mercado-item-title">Contact Us</a>
                             </li>
                         </ul>
                     </div>
