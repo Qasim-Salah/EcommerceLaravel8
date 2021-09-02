@@ -40,9 +40,7 @@
                                     <input type="text" name="name" placeholder="Product Name" value="{{old('name')}}"
                                            class="form-control input-md">
                                 </div>
-                                @error('name')
-                                <span class="text-danger">{{$message}}</span>
-                                @enderror
+                                @error('name')<span class="text-danger">{{$message}}</span>@enderror
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Product Slug</label>

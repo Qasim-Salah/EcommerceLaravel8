@@ -1,74 +1,65 @@
 @extends('layouts.master')
 
 @section('title')
-    login@endsection
+    Admin login
+@endsection
 
 @section('content')
+    <main id="main" class="main-site left-sidebar">
 
-    <section class="flexbox-container">
-        <div class="col-12 d-flex align-items-center justify-content-center">
-            <div class="col-md-4 col-10 box-shadow-2 p-0">
-                <div class="card border-grey border-lighten-3 m-0">
-                    <div class="card-header border-0">
-                        <div class="card-title text-center">
-                            <div class="p-1">
-                                <img src="{{asset('assets/user/images/logo.png')}}" alt="LOGO"/>
+        <div class="container">
 
+            <div class="wrap-breadcrumb">
+                <ul>
+                    <li class="item-link"><a href="{{route('user.home')}}" class="link">home</a></li>
+                    <li class="item-link"><span>login</span></li>
+                </ul>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12 col-md-offset-3">
+                    <div class=" main-content-area">
+                        <div class="wrap-login-item">
+                            <div class="login-form form-item form-stl">
+                                @include('layouts.includes.alerts.success')
+                                @include('layouts.includes.alerts.errors')
+                                <form name="frm-login" method="POST" action="{{route('admin.post.login')}}">
+                                    @csrf
+                                    <fieldset class="wrap-title">
+                                        <h3 class="form-title">Log in to your account</h3>
+                                    </fieldset>
+                                    <fieldset class="wrap-input">
+
+                                        <label for="frm-login-uname">Email Address:</label>
+                                        <input type="email" id="frm-login-uname" name="email" placeholder="Type your email address"
+                                               value="{{ old('email') }}" required>
+                                        @error('email')<span class="text-danger">{{$message}}</span>@enderror
+                                    </fieldset>
+
+                                    <fieldset class="wrap-input">
+                                        <label for="frm-login-pass">Password:</label>
+                                        <input type="password" id="frm-login-pass" name="password" placeholder="************" required>
+                                        @error('password')
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
+                                    </fieldset>
+
+                                    <fieldset class="wrap-input">
+                                        <label class="remember-field">
+                                            <input type="checkbox" name="remember_me" id="remember-me"
+                                                   class="chk-remember"><span>Remember me</span>
+                                        </label>
+                                    </fieldset>
+                                    <input type="submit" class="btn btn-submit" value="Login" name="submit">
+                                </form>
                             </div>
                         </div>
-                        <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
-                            <span>الدخول للوحة التحكم </span>
-                        </h6>
-                    </div>
-                    <div class="card-content">
-                        @include('layouts.includes.alerts.success')
-                        @include('layouts.includes.alerts.errors')
-                        <div class="card-body">
-                            <form class="form-horizontal form-simple" action="{{route('admin.post.login')}}"
-                                  method="post"
-                                  novalidate>
-                                @csrf
-                                <fieldset class="form-group position-relative has-icon-left mb-0">
-                                    <input type="text" name="email" class="form-control form-control-lg input-lg"
-                                           value="" id="email" placeholder="أدخل البريد الالكتروني ">
-                                    <div class="form-control-position">
-                                        <i class="ft-user"></i>
-                                    </div>
-                                    @error('email')
-                                    <span class="text-danger">{{$message}}</span>
-                                    @enderror
-
-                                </fieldset>
-                                <fieldset class="form-group position-relative has-icon-left">
-                                    <input type="password" name="password" class="form-control form-control-lg input-lg"
-                                           id="user-password"
-                                           placeholder="أدخل كلمة المرور">
-                                    <div class="form-control-position">
-                                        <i class="la la-key"></i>
-                                    </div>
-                                    @error('password')
-                                    <span class="text-danger">{{$message}}</span>
-                                    @enderror
-                                </fieldset>
-                                <div class="form-group row">
-                                    <div class="col-md-6 col-12 text-center text-md-left">
-                                        <fieldset>
-                                            <input type="checkbox" name="remember_me" id="remember-me"
-                                                   class="chk-remember">
-                                            <label for="remember-me">تذكر دخولي</label>
-                                        </fieldset>
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-info btn-lg btn-block"><i class="ft-unlock"></i>
-                                    دخول
-                                </button>
-                            </form>
-                        </div>
-                    </div>
+                    </div><!--end main products area-->
                 </div>
-            </div>
-        </div>
-    </section>
+            </div><!--end row-->
 
+        </div><!--end container-->
+
+    </main>
 @endsection
 

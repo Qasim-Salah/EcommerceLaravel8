@@ -18,6 +18,9 @@ Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
     Route::get('/shop', [HomeController::class, 'shop'])->name('shop');
     Route::get('/cart', [HomeController::class, 'cart'])->name('cart');
     Route::get('/wishlist', [HomeController::class, 'wishlist'])->name('wishlist');
+    Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+    Route::post('/contact', [HomeController::class, 'storeContact'])->name('contact.store');
+
 
     Route::post('/cart', [ShopController::class, 'store'])->name('store.cart');
     Route::post('/wishlist', [ShopController::class, 'addToWishList'])->name('cart.wishlist');

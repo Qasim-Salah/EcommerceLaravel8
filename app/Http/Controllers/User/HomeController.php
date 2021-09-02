@@ -4,7 +4,9 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\ContactRequest;
 use App\Models\Category as categoryModel;
+use App\Models\Contact as ContactModel;
 use App\Models\HomeSlider as HomeSliderModel;
 use App\Models\Product as ProductModel;
 use App\Models\Sale as SaleModel;
@@ -53,5 +55,18 @@ class HomeController extends Controller
         return view('user.cart');
     }
 
+    public function contact()
+    {
 
+        return view('user.contact');
+    }
+
+    public function storeContact(ContactRequest $request)
+    {
+        $contact = ContactModel::create($request->validated());
+        if ($contact) {
+            return redirect()->route('admin.home')->with(['success' => 'Added successfully']);
+        }
+        return redirect()->route('admin.contact.store')->with(['error' => 'An error occurred, please try again later']);
+    }
 }
