@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeSliderController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SaleController;
 use App\Http\Controllers\User\HomeController;
@@ -43,6 +44,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:admin
         Route::post('/update/{id}', [HomeSliderController::class, 'update'])->name('slider.update');
         Route::get('/delete/{id}', [HomeSliderController::class, 'destroy'])->name('slider.destroy');
     });
+    Route::group(['prefix' => 'order' ,'middleware'=>'auth:admin'], function () {
+
+        Route::get('/', [OrderController::class, 'index'])->name('order');
+        Route::get('/details/{id}', [OrderController::class, 'details'])->name('order.details');
+
+    });
+
 
     Route::group(['prefix' => 'sale'], function () {
         Route::get('/create', [SaleController::class, 'create'])->name('sale.create');

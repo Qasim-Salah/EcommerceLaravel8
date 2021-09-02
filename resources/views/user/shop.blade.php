@@ -77,7 +77,7 @@
                                                 </div>
                                                 <div class="product-wish">
                                                     @if ($wish->contains($products->id))
-                                                        <a href="#"><i class="fa fa-heart fill-heart"></i></a>
+                                                        <a href="{{route('user.destroy.wishlist',$products->id)}}"><i class="fa fa-heart fill-heart"></i></a>
                                                     @else
                                                         <form action="{{route('user.cart.wishlist')}}" method="POST">
                                                             @csrf

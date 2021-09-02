@@ -27,9 +27,7 @@
                                         <label for="frm-login-uname">Email Address:</label>
                                         <input type="email" id="frm-login-uname" name="email" placeholder="Type your email address"
                                                value="{{ old('email') }}" required>
-                                        @error('email')
-                                        <span class="text-danger">{{$message}}</span>
-                                        @enderror
+                                        @error('email')<span class="text-danger">{{$message}}</span>@enderror
                                     </fieldset>
 
                                     <fieldset class="wrap-input">

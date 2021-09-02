@@ -18,7 +18,7 @@ class HomeController extends Controller
         $data = [];
         $data['slider'] = HomeSliderModel::active()->latest()->get();
         $data['latestProduct'] = ProductModel::latest()->take(8)->get();
-        $data['saleProducts']=ProductModel::where('sale_price','>',0)->inRandomOrder()->take(8)->get();
+        $data['saleProducts'] = ProductModel::where('sale_price', '>', 0)->inRandomOrder()->take(8)->get();
         $data['sale'] = SaleModel::find(1);
         return view('user.home', $data);
     }
@@ -35,12 +35,17 @@ class HomeController extends Controller
         return view('user.search', compact('category', 'product'));
     }
 
+    public function wishlist()
+    {
+        return view('user.wishlist.index');
+    }
+
     public function shop()
     {
         $product = ProductModel::latest()->paginate(PAGINATION_COUNT);
         $category = CategoryModel::all();
-        $wish=Cart::instance('wishlist')->content()->pluck('id');
-        return view('user.shop', compact('product', 'category' ,'wish'));
+        $wish = Cart::instance('wishlist')->content()->pluck('id');
+        return view('user.shop', compact('product', 'category', 'wish'));
     }
 
     public function cart()
@@ -48,8 +53,5 @@ class HomeController extends Controller
         return view('user.cart');
     }
 
-    public function checkout()
-    {
-        return view('user.checkout');
-    }
+
 }

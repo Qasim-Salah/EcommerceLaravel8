@@ -64,6 +64,9 @@
                                         <li class="menu-item">
                                             <a title="Sale" href="{{route('admin.sale.create')}}">Sale</a>
                                         </li>
+                                        <li class="menu-item">
+                                            <a title="Order" href="{{route('admin.order')}}">Order</a>
+                                        </li>
                                         <form id="logout-form" action="{{ route('admin.logout') }}" method="POST">
                                             @csrf
                                             <li class="menu-item">
@@ -81,6 +84,12 @@
                                     <ul class="submenu curency">
                                         <li class="menu-item">
                                             <a title="Dashboard" href="#">Dashboard</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a title="Order" href="{{route('user.order')}}">My Order</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a title="Password" href="{{route('user.change.password')}}">Change Password</a>
                                         </li>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                             @csrf
@@ -121,18 +130,18 @@
 
                     <div class="wrap-icon right-section">
                         <div class="wrap-icon-section wishlist">
-                            <a href="#" class="link-direction">
+                            <a href="{{route('user.wishlist')}}" class="link-direction">
                                 <i class="fa fa-heart" aria-hidden="true"></i>
                                 <div class="left-info">
                                     @if (Cart::instance('wishlist')->count() > 0)
-                                    <span class="index">{{Cart::instance('wishlist')->count()}} item</span>
+                                        <span class="index">{{Cart::instance('wishlist')->count()}} item</span>
                                     @endif
                                     <span class="title">Wishlist</span>
                                 </div>
                             </a>
                         </div>
                         <div class="wrap-icon-section minicart">
-                            <a href="#" class="link-direction">
+                            <a href="{{route('user.cart')}}" class="link-direction">
                                 <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                                 <div class="left-info">
                                     @if (Cart::instance('cart')->count() > 0)
@@ -191,7 +200,7 @@
                                 <a href="{{route('user.cart')}}" class="link-term mercado-item-title">Cart</a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{route('user.checkout')}}" class="link-term mercado-item-title">Checkout</a>
+                                <a href="{{route('user.checkout.create')}}" class="link-term mercado-item-title">Checkout</a>
                             </li>
                             <li class="menu-item">
                                 <a href="contact-us.html" class="link-term mercado-item-title">Contact Us</a>

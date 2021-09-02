@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    cart
+    Contact
 @endsection
 @section('content')
     <main id="main" class="main-site">
