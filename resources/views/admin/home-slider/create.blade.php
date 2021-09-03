@@ -29,8 +29,8 @@
                             </div>
                         </div>
                     </div>
-                    @include('admin.includes.alerts.success')
-                    @include('admin.includes.alerts.errors')
+                    @include('layouts.includes.alerts.success')
+                    @include('layouts.includes.alerts.errors')
                     <div class="panel-body">
                         <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{route('admin.slider.store')}}">
                             @csrf

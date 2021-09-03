@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\SaleDateRequest;
-use App\Http\Requests\Dashboard\SliderRequest;
 use App\Models\Sale as SaleModel;
 
 class SaleController extends Controller
@@ -18,10 +17,7 @@ class SaleController extends Controller
 
     public function store(SaleDateRequest $request)
     {
-        $sale = SaleModel::create([
-            'status' => $request->status,
-            'sale_date' => $request->sale_date,
-        ]);
+        $sale = SaleModel::create($request->validated());
         if ($sale) {
             return redirect()->route('admin.sale.create')->with(['success' => 'Added successfully']);
         }

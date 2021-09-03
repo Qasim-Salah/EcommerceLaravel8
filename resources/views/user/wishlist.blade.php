@@ -46,7 +46,6 @@
             <div class="row">
                 @if (Cart::instance('wishlist')->count() > 0)
                     <ul class="product-list grid-products equal-container">
-{{--                        @isset($product=Cart::instance('wishlist')->content())--}}
                             @foreach(Cart::instance('wishlist')->content() as $products)
                                 <li class="col-lg-3 col-md-6 col-sm-6 col-xs-6 ">
                                     <div class="product product-style-3 equal-elem ">
@@ -79,13 +78,11 @@
                                     </div>
                                 </li>
                             @endforeach
-{{--                        @endisset--}}
                     </ul>
                 @else
                     No item in wishlist
                 @endif
                 <div class="wrap-pagination-info">
-{{--                    {{$product->links()}}--}}
                 </div>
             </div>
         </div><!--end container-->

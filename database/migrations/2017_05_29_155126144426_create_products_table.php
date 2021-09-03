@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('short_description')->nullable();
             $table->text('description');
             $table->decimal('regular_price');
-            $table->decimal('sale_price')->nullable();
+            $table->decimal('sale_price')->unsigned()->nullable();
             $table->string('sku');
             $table->boolean('stock_status')->default(0);
             $table->boolean('featured')->default(false);

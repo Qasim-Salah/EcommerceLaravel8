@@ -21,7 +21,7 @@ class HomeController extends Controller
         $data['slider'] = HomeSliderModel::active()->latest()->get();
         $data['latestProduct'] = ProductModel::latest()->take(8)->get();
         $data['saleProducts'] = ProductModel::where('sale_price', '>', 0)->inRandomOrder()->take(8)->get();
-        $data['sale'] = SaleModel::find(1);
+        $data['sale'] = SaleModel::orderby('created_at', 'asc')->first();
         return view('user.home', $data);
     }
 
@@ -39,7 +39,7 @@ class HomeController extends Controller
 
     public function wishlist()
     {
-        return view('user.wishlist.index');
+        return view('user.wishlist');
     }
 
     public function shop()
@@ -68,5 +68,11 @@ class HomeController extends Controller
             return redirect()->route('admin.home')->with(['success' => 'Added successfully']);
         }
         return redirect()->route('admin.contact.store')->with(['error' => 'An error occurred, please try again later']);
+    }
+
+    public function category()
+    {
+        $category = CategoryModel::latest()->paginate(PAGINATION_COUNT);
+        return view('user.category', compact('category'));
     }
 }
