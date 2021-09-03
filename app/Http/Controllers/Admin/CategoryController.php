@@ -48,8 +48,7 @@ class CategoryController extends Controller
         $category = CategoryModel::where('slug', $slug)->first();
         $requests = $request->validated();
         $requests['slug'] = Str::slug($request->slug);
-        if ($category) {
-            $category->update($requests);
+        if ($category->update($requests)) {
             return redirect()->route('admin.category')->with(['success' => 'Added successfully']);
         }
         return redirect()->route('admin.category.edit')->with(['error' => 'An error occurred, please try again later']);

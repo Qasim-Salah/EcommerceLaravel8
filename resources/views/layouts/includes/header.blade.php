@@ -20,9 +20,6 @@
                                         <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                     <ul class="submenu curency">
                                         <li class="menu-item">
-                                            <a title="Dashboard" href="#">Dashboard</a>
-                                        </li>
-                                        <li class="menu-item">
                                             <a title="Category" href="{{route('admin.category')}}">Category</a>
                                         </li>
                                         <li class="menu-item">
@@ -55,9 +52,6 @@
                                             class="fa fa-angle-down"
                                             aria-hidden="true"></i></a>
                                     <ul class="submenu curency">
-                                        <li class="menu-item">
-                                            <a title="Dashboard" href="#">Dashboard</a>
-                                        </li>
                                         <li class="menu-item">
                                             <a title="Order" href="{{route('user.order')}}">My Order</a>
                                         </li>
@@ -145,9 +139,6 @@
                                                                                                          aria-hidden="true"></i></a>
                             </li>
                             <li class="menu-item">
-                                <a href="about-us.html" class="link-term mercado-item-title">About Us</a>
-                            </li>
-                            <li class="menu-item">
                                 <a href="{{route('user.shop')}}" class="link-term mercado-item-title">Shop</a>
                             </li>
                             <li class="menu-item">
@@ -159,6 +150,9 @@
 
                             <li class="menu-item">
                                 <a href="{{route('user.contact')}}" class="link-term mercado-item-title">Contact Us</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{route('user.category')}}" class="link-term mercado-item-title">Category</a>
                             </li>
                         </ul>
                     </div>

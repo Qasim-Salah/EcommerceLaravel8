@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Enums\SlidersType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\SliderRequest;
 use App\Models\HomeSlider as HomeSliderModel;

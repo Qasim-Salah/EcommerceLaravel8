@@ -10,7 +10,6 @@
             <div class="wrap-breadcrumb">
                 <ul>
                     <li class="item-link"><a href="{{route('user.home')}}" class="link">home</a></li>
-                    <li class="item-link"><a href="{{route('login')}}" class="link"><span>login</span></a></li>
                 </ul>
             </div>
             <div class=" main-content-area">

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\User\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserChangePasswordRequest;
@@ -13,7 +13,7 @@ class ChangePasswordController extends Controller
 {
     public function create()
     {
-        return view('auth.passwords.change-password');
+        return view('user.auth.passwords.change-password');
     }
 
     public function store(UserChangePasswordRequest $request)
