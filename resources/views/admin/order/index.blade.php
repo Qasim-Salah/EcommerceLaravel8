@@ -21,9 +21,6 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-md-6"> All Order</div>
-{{--                                <div class="col-md-6">--}}
-{{--                                    <a class="btn btn-success pull-right" href="{{route('admin.order.create')}}">Add New</a>--}}
-{{--                                </div>--}}
                             </div>
                         </div>
                     </div>

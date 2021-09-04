@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category as CategoryModel;
 use App\Models\Product as ProductModel;
 use App\Models\Sale as SaleModel;
+use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,7 @@ class ShopController extends Controller
         $data['slider_product'] = ProductModel::paginate(PAGINATION_COUNT);
         $data['popular_product'] = ProductModel::inRandomOrder()->limit(4)->get();
         $data['related_product'] = ProductModel::where('category_id', $data['product']->category_id)->inRandomOrder()->limit(5)->get();
-        $data['sale'] = SaleModel::find(1);
+        $data['sale'] = SaleModel::where('created_at', '<=',Carbon::today())->first();
         return view('user.product.details', $data);
 
     }
