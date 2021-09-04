@@ -10,6 +10,7 @@ use App\Models\Contact as ContactModel;
 use App\Models\HomeSlider as HomeSliderModel;
 use App\Models\Product as ProductModel;
 use App\Models\Sale as SaleModel;
+use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,7 @@ class HomeController extends Controller
         $data['slider'] = HomeSliderModel::active()->latest()->get();
         $data['latestProduct'] = ProductModel::latest()->take(8)->get();
         $data['saleProducts'] = ProductModel::where('sale_price', '>', 0)->inRandomOrder()->take(8)->get();
-        $data['sale'] = SaleModel::orderby('created_at', 'asc')->first();
+        $data['sale'] = SaleModel::where('created_at', '<=',Carbon::today())->first();
         return view('user.home', $data);
     }
 

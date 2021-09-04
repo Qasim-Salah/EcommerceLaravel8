@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Order as OrderModel;
 
-
-
 class OrderController extends Controller
 {
     public function index()

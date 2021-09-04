@@ -57,7 +57,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:admin
         Route::get('/create', [SaleController::class, 'create'])->name('sale.create');
         Route::post('/store', [SaleController::class, 'store'])->name('sale.store');
     });
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 });
 
-Route::get('/logout', [LoginController::class, 'logout'])->name('admin.logout');
